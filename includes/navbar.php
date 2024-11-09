@@ -7,37 +7,48 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="registration.php">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo BASE_URL; ?>index.php">Home</a>
                     </li>
 
+                    <?php if(!isset($_SESSION["username"])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>login.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>registration.php">Register</a>
+                    </li>
+                    <?php } ?>
+
+                    <?php if(isset($_SESSION["username"]) && (isset($_SESSION["is_admin"]) && $_SESSION["is_admin"] == "1")) { ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>views/admin/products/index.php">Products</a>
+                    </li>
+
+                    <?php } ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>cart.php">Cart</a>
+                    </li>
 
                      <!-- Dropdown for Signed-in User -->
+                    <?php 
+                    if(isset($_SESSION["username"])) { ?>
                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            JohnDoe <!-- Replace with dynamic username -->
+                            <?php echo $_SESSION["username"]; ?> <!-- Replace with dynamic username -->
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-
-                                <li>
-                                    <form action="logout.php" method = "POST">
-                                        <button type ="submit" class="logout.php">Logout</button>
-                                    </form>
-                                </li>
+                            <li>
+                                <form action="logout.php" method="POST">
+                                    <button type="submit" class="dropdown-item">Log Out</button>
+                                </form>
                         </ul>
                     </li>
-                   
+                    <?php } ?>
                 </ul>
             </div>
         </div>

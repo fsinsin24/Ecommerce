@@ -1,36 +1,14 @@
 <?php
-    session_start();
-    require_once("includes\header.php");
-
-
-    if(isset($_SESSION["success"])){
-        $messageSuccess = $_SESSION["success"];
-        unset($_SESSION["success"]);
-
-
-    }
-
-
-
-
-    if(isset($_SESSION["error"])){
-        $messageError = $_SESSION["error"];
-        unset($_SESSION["error"]);
-
-
-    }
-
-
- 
+   session_start();
+   require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
+   require_once(ROOT_DIR."includes/header.php");
 ?>
 
 
-    <!-- Navbar -->
-    <?php
-    require_once("includes\\navbar.php");
-
-
-?>
+<!-- Navbar -->
+<?php
+     require_once(ROOT_DIR."includes/navbar.php");
+    ?>
 
 
     <!-- Registration Form -->
@@ -45,24 +23,9 @@
 
 
                     <!-- Message Response -->
-                    <?php if (isset( $messageSuccess)){ ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong><?php echo  $messageSuccess; ?></strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
-   
+                    
 
-
-                    <?php if (isset($messageError)){ ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong><strong><?php echo $messageError; ?></strong></strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
-
-
-                        <form action="app/auth/register.php" method="POST">
+                        <form action="app/auth/Register.php" method="POST">
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
@@ -85,7 +48,7 @@
                         </form>
                     </div>
                     <div class="card-footer text-center">
-                        <p>Already have an account? <a href="login.html" class="text-primary">Login here</a></p>
+                        <p>Already have an account? <a href="login.php" class="text-primary">Login here</a></p>
                     </div>
                 </div>
             </div>
@@ -93,7 +56,4 @@
     </div>
 
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <!-- <?php require_once(ROOT_DIR."/includes/footer.php"); ?> -->
