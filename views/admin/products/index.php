@@ -38,7 +38,9 @@ require_once(ROOT_DIR."includes/header.php");
     <!-- Product Cards Container -->
     <div class="container content mt-3">
         <div class="row">
+
             <!-- Sample Product Card -->
+
             <!-- Loop through each product and generate a card dynamically -->
 
             <div class="col-md-4 mb-4">
