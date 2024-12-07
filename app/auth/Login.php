@@ -9,7 +9,7 @@ session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $host = "localhost";
-    $database = "ecomm1";
+    $database = "ecommerce";
     $dbusername = "root";
     $dbpassword = "";
 
@@ -24,6 +24,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(':p_username',$username);
             $stmt->execute();
             $users = $stmt->fetchAll();
+
+            // echo "Logged in";
             
             if($users){
                 if(password_verify($password,hash: $users[0]["password"])){

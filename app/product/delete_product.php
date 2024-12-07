@@ -2,7 +2,7 @@
 session_start();
 require_once(__DIR__."/../config/Directories.php"); //to handle folder specific path
 include(ROOT_DIR."/app/config/DatabaseConnection.php");
-    $db = new DatabaseConnect();
+    $db = new DatabaseConnection();
     $conn = $db->connectDB();
 
     $productList=[];

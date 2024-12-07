@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
     <!-- Navbar with Dropdown for User Account (Admin) -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -25,7 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="admin-dashboard.html">Dashboard</a>
                     </li>
-
 
                     <!-- Dropdown for Admin User -->
                     <li class="nav-item dropdown">
@@ -43,7 +41,6 @@
         </div>
     </nav>
 
-
     <!-- Page Header -->
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center">
@@ -54,7 +51,6 @@
         <p class="text-center">Manage all products in the catalog</p>
         <hr>
     </div>
-
 
     <!-- Product Cards Container -->
     <div class="container mt-3">
@@ -75,7 +71,6 @@
                 </div>
             </div>
 
-
             <!-- Another Product Card Example -->
             <div class="col-md-4 mb-4">
                 <div class="card">
@@ -90,7 +85,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Example for Another Product -->
             <div class="col-md-4 mb-4">
@@ -107,11 +101,9 @@
                 </div>
             </div>
 
-
             <!-- Add more product cards dynamically based on your backend data -->
         </div>
     </div>
-
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

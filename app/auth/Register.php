@@ -1,62 +1,41 @@
 <?php
 session_start();
-
-
-include('../config/DatabaseConnect.php');
-
+include('../config/DatabaseConnection.php');
 
 $fullname =         htmlspecialchars($_POST["fullName"]);
-$username =         htmlspecialchars($_POST["username"]);
+$username =         htmlspecialchars( $_POST["username"]);
 $password =         htmlspecialchars($_POST["password"]);
 $confirmPassword =  htmlspecialchars($_POST["confirmPassword"]);
 
 
-
-
-//received user input
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    //validate confirmpassword
 
-
-    $db = new DatabaseConnect();
+    $db = new DatabaseConnection();
     $conn = $db->connectDB();
     if(trim($password) == trim($confirmPassword)){
-       
-       try {
+
+
+        try {
             $stmt = $conn->prepare('INSERT INTO users (fullname, username, password, created_at, updated_at) VALUES (:p_fullname, :p_username, :p_password, NOW(), NOW()) ');
             $stmt->bindParam(':p_fullname',$fullname);
             $stmt->bindParam(':p_username',$username);
             $stmt->bindParam(':p_password',$password);
-
-
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            $password=password_hash($password,PASSWORD_BCRYPT);    
             $stmt->execute();
+
             header("location: /registration.php");
-            $_SESSION["success"] = "Registration Successful";
+            $_SESSION["success"]="Resgistration Successful";
             exit;
         } catch (Exception $e){
             echo "Connection Failed: " . $e->getMessage();
-           
         }
-       
-
-
     }else{
-        $_SESSION["error"] = "Passwords are not the same";
         header("location: /registration.php");
-       exit;
+        $_SESSION["error"]="Password not the same";
+        exit;
 
 
     }
 }
-
-
-
-
-//connect to database
-//insert data
-
 
 ?>
