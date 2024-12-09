@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../config/DatabaseConnection.php');
+include('../config/DatabaseConnect.php');
 
 $fullname =         htmlspecialchars($_POST["fullName"]);
 $username =         htmlspecialchars( $_POST["username"]);
@@ -10,7 +10,7 @@ $confirmPassword =  htmlspecialchars($_POST["confirmPassword"]);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $db = new DatabaseConnection();
+    $db = new DatabaseConnect();
     $conn = $db->connectDB();
     if(trim($password) == trim($confirmPassword)){
 

@@ -3,8 +3,8 @@
     require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 
     
-    include(ROOT_DIR."app/config/DatabaseConnection.php");
-    $db = new DatabaseConnection();
+    include(ROOT_DIR."app/config/DatabaseConnect.php");
+    $db = new DatabaseConnect();
     $conn = $db->connectDB();
 
     $carts          = [];

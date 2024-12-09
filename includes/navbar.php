@@ -43,7 +43,7 @@
                             <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form action="logout.php" method="POST">
+                                <form action="<?php echo BASE_URL; ?>logout.php" method="POST">
                                     <button type="submit" class="dropdown-item">Log Out</button>
                                 </form>
                         </ul>

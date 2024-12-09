@@ -5,9 +5,9 @@ if(!isset($_SESSION)){
 }
 
 require_once(__DIR__."/../config/Directories.php"); //to handle folder specific path
-include("../config/DatabaseConnection.php"); //to access database connection
+include("../config/DatabaseConnect.php"); //to access database connection
 
-$db = new DatabaseConnection(); //make a new database instance
+$db = new DatabaseConnect(); //make a new database instance
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -85,7 +85,7 @@ try {
         }
 
         $lastID = $conn->lastInsertId();
-        processImage($lastID);
+        /*processImage($lastID);*/
 
         $error = processImage($lastID);
         if($error){
@@ -143,7 +143,7 @@ function processImage($id){
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':p_image_url',$imageUrl);
     $stmt->bindParam(':p_id',$id);
-    if($stmt->execute()){
+    if(!$stmt->execute()){
         return "Failed to update the image URL field";
     }
 

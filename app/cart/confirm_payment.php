@@ -5,14 +5,14 @@ if(!isset($_SESSION)){
 }
 
 require_once(__DIR__."/../config/Directories.php");
-include("../config/DatabaseConnection.php");
+include("../config/DatabaseConnect.php");
 
 if(!isset($_SESSION['username'])){
     header("location: ".BASE_URL."login.php");
 
 }
 
-$db = new DatabaseConnection();
+$db = new DatabaseConnect();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -88,7 +88,7 @@ try {
         }
 
         $sql="INSERT INTO `orders` (order_date, payment_method, account_no, user_id, total_order, delivery_fee, total_amount, created_at, updated_at) 
-        VALUES (NOW(), :p_payment_method, :p_account_no, :p_user_id, :p_total_order, :p_delivery_fee, :p_total_amount, NOW(), NOW ())";
+        VALUES (NOW(), :p_payment_method, :p_account_no, :p_user_id, :p_total_order, :p_delivery_fee, :p_total_amount, NOW(), NOW())";
         $stmt=$conn->prepare($sql);
         $data=[
         ':p_payment_method' => $paymentMethod,

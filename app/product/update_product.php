@@ -5,9 +5,8 @@ if(!isset($_SESSION)){
 }
 
 require_once(__DIR__."/../config/Directories.php");
-include("../config/DatabaseConnection.php");
-
-$db = new DatabaseConnection();
+include(__DIR__. "/../config/DatabaseConnect.php");
+$db = new DatabaseConnect();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 

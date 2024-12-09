@@ -5,14 +5,14 @@ if(!isset($_SESSION)){
 }
 
 require_once(__DIR__."/../config/Directories.php");
-include("../config/DatabaseConnection.php");
+include("../config/DatabaseConnect.php");
 
 if(!isset($_SESSION['username'])){
     header("location: ".BASE_URL."login.php");
     exit;
 }
 
-$db = new DatabaseConnection();
+$db = new DatabaseConnect();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
